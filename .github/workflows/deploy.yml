@@ -30,5 +30,6 @@ jobs:
             go build -o app
             # 终止旧进程并启动新的服务
             pkill -f app || true
-            nohup ./app & disown
+            nohup ./app & 
+            echo "Service started"
           EOF
