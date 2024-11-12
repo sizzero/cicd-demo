@@ -22,7 +22,7 @@ jobs:
         env:
           GCP_IP: 34.28.162.180 # 替换为Google Cloud实例的外部IP地址
         run: |
-          ssh -t -o StrictHostKeyChecking=no -l zero82782 $GCP_IP << 'EOF'
+          ssh -tt -o StrictHostKeyChecking=no -l zero82782 $GCP_IP << 'EOF'
             # 更新代码
             git clone https://github.com/sizzero/cicd-demo.git || (cd cicd-demo && git pull)
             # 进入项目目录并编译项目
