@@ -1,0 +1,34 @@
+name: Deploy to Google Cloud
+
+on:
+  push:
+    branches:
+      - main  # 当推送到main分支时触发部署
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.GCP_SSH_KEY }}
+
+      - name: Deploy to Google Cloud
+        env:
+          GCP_IP: <34.28.162.180> # 替换为Google Cloud实例的外部IP地址
+        run: |
+          ssh -o StrictHostKeyChecking=no -l <zero82782@gmail.com> $GCP_IP << 'EOF'
+            # 更新代码
+            git clone <https://github.com/sizzero/cicd-demo.git> || (cd <cicd-demo> && git pull)
+            # 进入项目目录并编译项目
+            cd <cicd-demo>
+            go build -o app
+            # 终止旧进程并启动新的服务
+            pkill -f app || true
+            nohup ./app &
+          EOF
