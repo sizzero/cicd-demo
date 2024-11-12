@@ -18,7 +18,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.GCP_SSH_KEY }}
 
-      - name: Deploy to Google Cloud
+      - name: Deploy Demo to Google Cloud
         env:
           GCP_IP: 34.28.162.180 # 替换为Google Cloud实例的外部IP地址
         run: |
