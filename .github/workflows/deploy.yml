@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy Demo to Google Cloud
         env:
-          GCP_IP: 34.28.162.180 # 替换为Google Cloud实例的外部IP地址
+          GCP_IP: 34.133.80.143 # 替换为Google Cloud实例的外部IP地址
         run: |
           ssh -tt -o StrictHostKeyChecking=no -l zero82782 $GCP_IP << 'EOF'
             # 更新代码
