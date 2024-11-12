@@ -8,7 +8,7 @@ import (
 
 // 首页处理函数
 func homePage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Welcome to the Go Server!")
+	fmt.Fprintf(w, "!Welcome to the Go Server!")
 }
 
 // 处理 /hello 的请求并返回一个JSON响应
